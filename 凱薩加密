@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+int main(){
+    int type; // 0 = 加密 1 = 解密
+    cout << "請輸入加密或解密(0 / 1) : ";
+    cin >> type;
+
+    int key; // 要加密的數量
+    cout << "輸入Key (大於0)";
+    cin >> key;
+
+    string password; // 原始密碼
+    cout << "輸入要加密或解密的密碼 (只限大小寫字母)";
+    cin >> password;
+
+    for(int i = 0; i < password.size(); i++){
+        char ch = password [i];
+
+    if (isalpha(ch)){
+    if(type == 0){
+        ch = ch - key;
+        if(ch < 'z')ch = ch - 26;
+    }
+    else {
+        ch = ch - key;
+        if(ch < 'a')ch = ch + 26;
+        }
+    }
+    password[i] = ch;
+    }
+
+    cout << password;
+    return 0;
+}
